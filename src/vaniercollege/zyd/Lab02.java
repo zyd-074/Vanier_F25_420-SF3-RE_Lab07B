@@ -10,6 +10,8 @@ import java.util.Random;
 
 /**
  * @author Yu Duo Zhang
+ * 2025/09/10
+ * https://github.com/Cloumy074/Lab02-F25.git
  */
 public class Lab02 extends Application{
 
