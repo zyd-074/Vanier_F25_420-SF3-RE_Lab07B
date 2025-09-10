@@ -13,7 +13,7 @@ import java.util.Random;
  * 2025/09/10
  * https://github.com/Cloumy074/Lab02-F25.git
  */
-public class Lab02 extends Application{
+public class Lab02_YuDuoZhang extends Application{
 
     /**
      * @param args the command line arguments
