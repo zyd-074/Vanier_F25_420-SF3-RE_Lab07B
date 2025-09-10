@@ -1,6 +1,7 @@
 package vaniercollege.zyd;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.*;
 import javafx.scene.control.*;
@@ -20,10 +21,22 @@ public class Lab02 extends Application{
 
     @Override
     public void start(Stage stage) {
-        TextField textField = new TextField();
-        HBox hb = new HBox(textField);
-        Scene scene = new Scene(hb, 300, 300);
+        BorderPane root = new BorderPane();
+        StackPane middle = new StackPane();
+        
+        Label title = new Label("Random Game");
+        Label bottom = new Label("Waiting...");
+        Label lblImage = new Label();
+        
+        
+        root.setTop(title);
+        root.setBottom(bottom);
+        middle.getChildren().add(lblImage);
+        root.setCenter(middle);
+        
+        Scene scene = new Scene(root, 250, 300);
         stage.setScene(scene);
+        stage.setTitle("Java Games");
         stage.show();
     }
     
