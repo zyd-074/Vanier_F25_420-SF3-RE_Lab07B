@@ -17,6 +17,7 @@ import javafx.util.Duration;
  */
 public class Lab07B_YuDuoZhang extends Application{
     static int counter = 0;
+    static int duration = 2000;
 
     /**
      * @param args the command line arguments
@@ -37,7 +38,8 @@ public class Lab07B_YuDuoZhang extends Application{
         Label title = new Label("Welcome To The Game");
         Image[] images = new Image[20];
         ImageView imgView = new ImageView();
-        Button play = new Button();
+        Button play = new Button("Play");
+        Button pause = new Button("Pause");
         Button speedPlus = new Button("Speed+");
         Button speedMinus = new Button("Speed-");
         
@@ -50,10 +52,10 @@ public class Lab07B_YuDuoZhang extends Application{
 
         // ImageView Animation
         FadeTransition restart = new FadeTransition();
-        restart.setDuration(Duration.seconds(1));
+        restart.setDuration(Duration.millis(duration));
         restart.setNode(imgView);
         FadeTransition changeImg = new FadeTransition();
-        changeImg.setDuration(Duration.seconds(1));
+        changeImg.setDuration(Duration.ZERO);
         changeImg.setNode(imgView);
         restart.setFromValue(1);
         restart.setToValue(1);
@@ -72,11 +74,38 @@ public class Lab07B_YuDuoZhang extends Application{
         
         changeImg.play();
         
+        // Handlers for Buttons
+        speedPlus.setOnAction(e -> {
+            if (duration >= 500) {
+                duration -= 500;
+            }
+            restart.setDuration(Duration.millis(duration));
+        });
+        
+        speedMinus.setOnAction(e -> {
+            if (duration <= 5000) {
+                duration += 500;
+            }
+            restart.setDuration(Duration.millis(duration));
+        });
+        
+        pause.setOnAction(e -> {
+            btns.getChildren().remove(pause);
+            btns.getChildren().add(play);
+            restart.pause();
+        });
+        
+        play.setOnAction(e -> {
+            btns.getChildren().remove(play);
+            btns.getChildren().add(pause);
+            restart.play();
+        });
+        
         // Layout Setup
         titleDisplay.getChildren().add(title);
         titleDisplay.setAlignment(Pos.CENTER);
         
-        btns.getChildren().addAll(speedMinus, play, speedPlus);
+        btns.getChildren().addAll(speedMinus, speedPlus, pause);
         btns.setSpacing(15);
         btns.setAlignment(Pos.CENTER);
         
