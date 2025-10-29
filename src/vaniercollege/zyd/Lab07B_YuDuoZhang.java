@@ -76,15 +76,15 @@ public class Lab07B_YuDuoZhang extends Application{
         
         // Handlers for Buttons
         speedPlus.setOnAction(e -> {
-            if (duration >= 500) {
-                duration -= 500;
+            if (duration >= 100) {
+                duration -= 50;
             }
             restart.setDuration(Duration.millis(duration));
         });
         
         speedMinus.setOnAction(e -> {
             if (duration <= 5000) {
-                duration += 500;
+                duration += 50;
             }
             restart.setDuration(Duration.millis(duration));
         });
